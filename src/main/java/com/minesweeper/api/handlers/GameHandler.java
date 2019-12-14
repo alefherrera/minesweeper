@@ -3,7 +3,6 @@ package com.minesweeper.api.handlers;
 import com.minesweeper.api.payloads.StartGamePayload;
 import com.minesweeper.api.responses.Board;
 import com.minesweeper.api.responses.GameResponse;
-import com.minesweeper.api.responses.IdResponse;
 import com.minesweeper.core.Game;
 import com.minesweeper.core.Position;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +28,7 @@ public class GameHandler {
             final Game game = new Game(startGamePayload.getRows(), startGamePayload.getColumns());
             startGamePayload.getMines().forEach(game::addMine);
             gameMap.put(id, game);
-            return ServerResponse.ok().body(BodyInserters.fromValue(new IdResponse(id)));
+            return ServerResponse.ok().body(BodyInserters.fromValue(getGameResponse(id, game)));
         });
     }
 
@@ -39,7 +38,7 @@ public class GameHandler {
             return ServerResponse.notFound().build();
         }
         final Game game = gameMap.get(gameId);
-        return ServerResponse.ok().body(BodyInserters.fromValue(getGameResponse(game)));
+        return ServerResponse.ok().body(BodyInserters.fromValue(getGameResponse(gameId, game)));
     }
 
     public Mono<ServerResponse> select(ServerRequest request) {
@@ -51,7 +50,7 @@ public class GameHandler {
         final Mono<Position> positionMono = request.bodyToMono(Position.class);
         return positionMono.flatMap(position -> {
             game.select(position);
-            return ServerResponse.ok().body(BodyInserters.fromValue(getGameResponse(game)));
+            return ServerResponse.ok().body(BodyInserters.fromValue(getGameResponse(gameId, game)));
         });
     }
 
@@ -64,7 +63,7 @@ public class GameHandler {
         final Mono<Position> positionMono = request.bodyToMono(Position.class);
         return positionMono.flatMap(position -> {
             game.flag(position);
-            return ServerResponse.ok().body(BodyInserters.fromValue(getGameResponse(game)));
+            return ServerResponse.ok().body(BodyInserters.fromValue(getGameResponse(gameId, game)));
         });
     }
 
@@ -72,8 +71,8 @@ public class GameHandler {
         return request.pathVariable(GAME_ID);
     }
 
-    private GameResponse getGameResponse(final Game game) {
-        return new GameResponse(game.getStatus(), new Board(game.getCells(), game.getRows(), game.getColumns()));
+    private GameResponse getGameResponse(final String gameId, final Game game) {
+        return new GameResponse(gameId, game.getStatus(), new Board(game.getCells(), game.getRows(), game.getColumns()));
     }
 
 }
