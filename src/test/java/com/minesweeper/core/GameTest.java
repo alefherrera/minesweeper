@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.minesweeper.core.Constants.MINE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameTest {
 
@@ -22,6 +23,7 @@ class GameTest {
         game.select(1, 0);
         final Cell cell = game.getBoard().getCell(new Position(0, 1));
         assertEquals("1", cell.getValue());
+        assertTrue(cell.isRevealed());
     }
 
 }

@@ -18,7 +18,12 @@ public abstract class Cell {
     @Setter
     private String value;
 
-    protected void select() {
+    @Getter
+    private boolean revealed;
 
+    public final void select() {
+        revealed = innerSelect();
     }
+
+    protected abstract boolean innerSelect();
 }
