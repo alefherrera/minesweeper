@@ -1,6 +1,6 @@
 package com.minesweeper.api.responses;
 
-import com.minesweeper.core.Cell;
+import com.minesweeper.core.cell.Cell;
 import lombok.Getter;
 
 import java.util.ArrayList;

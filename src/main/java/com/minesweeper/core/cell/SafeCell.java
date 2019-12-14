@@ -1,4 +1,8 @@
-package com.minesweeper.core;
+package com.minesweeper.core.cell;
+
+import com.minesweeper.core.Game;
+import com.minesweeper.core.GameOverException;
+import com.minesweeper.core.value.Position;
 
 import java.util.Collection;
 

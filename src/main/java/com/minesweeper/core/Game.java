@@ -1,5 +1,9 @@
 package com.minesweeper.core;
 
+import com.minesweeper.core.cell.Cell;
+import com.minesweeper.core.cell.MineCell;
+import com.minesweeper.core.cell.SafeCell;
+import com.minesweeper.core.value.Position;
 import lombok.Getter;
 
 import java.util.Collection;
@@ -65,7 +69,7 @@ public class Game {
         }
     }
 
-    Collection<Cell> getNeighbours(final Position position) {
+    public Collection<Cell> getNeighbours(final Position position) {
         final Integer x = position.getX();
         final Integer y = position.getX();
         Collection<Cell> result = new HashSet<>();

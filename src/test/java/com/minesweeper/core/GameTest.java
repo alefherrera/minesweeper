@@ -1,8 +1,10 @@
 package com.minesweeper.core;
 
+import com.minesweeper.core.cell.Cell;
+import com.minesweeper.core.value.Position;
 import org.junit.jupiter.api.Test;
 
-import static com.minesweeper.core.Constants.MINE;
+import static com.minesweeper.core.value.Constants.MINE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

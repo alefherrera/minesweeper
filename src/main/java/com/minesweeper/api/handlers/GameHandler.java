@@ -4,7 +4,7 @@ import com.minesweeper.api.payloads.StartGamePayload;
 import com.minesweeper.api.responses.Board;
 import com.minesweeper.api.responses.GameResponse;
 import com.minesweeper.core.Game;
-import com.minesweeper.core.Position;
+import com.minesweeper.core.value.Position;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;

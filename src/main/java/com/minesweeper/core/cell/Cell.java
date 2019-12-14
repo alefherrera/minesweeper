@@ -1,5 +1,7 @@
-package com.minesweeper.core;
+package com.minesweeper.core.cell;
 
+import com.minesweeper.core.GameOverException;
+import com.minesweeper.core.value.Position;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;

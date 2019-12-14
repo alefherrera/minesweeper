@@ -1,4 +1,4 @@
-package com.minesweeper.core;
+package com.minesweeper.core.value;
 
 import lombok.Value;
 

@@ -1,6 +1,6 @@
 package com.minesweeper.api.responses;
 
-import com.minesweeper.core.Position;
+import com.minesweeper.core.value.Position;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

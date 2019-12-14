@@ -1,4 +1,7 @@
-package com.minesweeper.core;
+package com.minesweeper.core.cell;
+
+import com.minesweeper.core.GameOverException;
+import com.minesweeper.core.cell.Cell;
 
 public class FlagCellDecorator extends Cell {
 
