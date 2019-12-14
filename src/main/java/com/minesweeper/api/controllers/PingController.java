@@ -1,4 +1,4 @@
-package com.minesweeper.app.controllers;
+package com.minesweeper.api.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
