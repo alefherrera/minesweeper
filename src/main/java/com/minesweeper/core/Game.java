@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 
 public class Game {
 
@@ -50,11 +51,16 @@ public class Game {
         }
     }
 
+    public void flag(final Position position) {
+        final Cell cell = getCell(position);
+        cells[cell.getPosition().getX()][cell.getPosition().getY()] = cell.flag();
+    }
+
     private void endGame() {
         status = GameStatus.GAME_OVER;
         for (int row = 0; row < rows; row++) {
             for (int column = 0; column < columns; column++) {
-                getCell(column, row).setRevealed();
+                Optional.ofNullable(getCell(column, row)).ifPresent(Cell::setRevealed);
             }
         }
     }

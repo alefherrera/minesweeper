@@ -16,6 +16,7 @@ public class GameRouter {
         return RouterFunctions
                 .route(RequestPredicates.POST("/"), gameHandler::start)
                 .andRoute(RequestPredicates.POST("/{gameId}"), gameHandler::select)
+                .andRoute(RequestPredicates.POST("/{gameId}/flag"), gameHandler::flag)
                 .andRoute(RequestPredicates.GET("/{gameId}"), gameHandler::getState);
     }
 

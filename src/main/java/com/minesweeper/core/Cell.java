@@ -30,4 +30,11 @@ public abstract class Cell {
 
     public abstract String getValue();
 
+    public Cell flag() {
+        return new FlagCellDecorator(this);
+    }
+
+    public String printValue() {
+        return isRevealed() ? getValue() : null;
+    }
 }

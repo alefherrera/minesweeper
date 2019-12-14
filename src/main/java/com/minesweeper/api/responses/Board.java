@@ -24,9 +24,6 @@ public class Board {
     }
 
     private BoardCell mapToBoardCell(final Cell cell) {
-        if (!cell.isRevealed()) {
-            return new BoardCell(cell.getPosition(), cell.isRevealed());
-        }
-        return new BoardCell(cell.getPosition(), cell.getValue(), cell.isRevealed());
+        return new BoardCell(cell.getPosition(), cell.printValue(), cell.isRevealed());
     }
 }

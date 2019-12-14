@@ -18,4 +18,15 @@ public class SafeCell extends Cell {
         return String.valueOf(mines);
     }
 
+    @Override
+    public void select() throws GameOverException {
+        final Collection<Cell> neighbours = game.getNeighbours(getPosition());
+        final boolean allSafe = neighbours.stream().allMatch(cell -> "0".equals(cell.getValue()));
+        super.select();
+        if (allSafe) {
+            for (Cell neighbour : neighbours) {
+                neighbour.select();
+            }
+        }
+    }
 }

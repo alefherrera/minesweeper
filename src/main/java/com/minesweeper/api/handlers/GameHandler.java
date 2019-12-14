@@ -34,7 +34,7 @@ public class GameHandler {
     }
 
     public Mono<ServerResponse> getState(ServerRequest request) {
-        final String gameId = request.pathVariable(GAME_ID);
+        final String gameId = getGameId(request);
         if (!gameMap.containsKey(gameId)) {
             return ServerResponse.notFound().build();
         }
@@ -43,7 +43,7 @@ public class GameHandler {
     }
 
     public Mono<ServerResponse> select(ServerRequest request) {
-        final String gameId = request.pathVariable(GAME_ID);
+        final String gameId = getGameId(request);
         if (!gameMap.containsKey(gameId)) {
             return ServerResponse.notFound().build();
         }
@@ -53,6 +53,23 @@ public class GameHandler {
             game.select(position);
             return ServerResponse.ok().body(BodyInserters.fromValue(getGameResponse(game)));
         });
+    }
+
+    public Mono<ServerResponse> flag(ServerRequest request) {
+        final String gameId = getGameId(request);
+        if (!gameMap.containsKey(gameId)) {
+            return ServerResponse.notFound().build();
+        }
+        final Game game = gameMap.get(gameId);
+        final Mono<Position> positionMono = request.bodyToMono(Position.class);
+        return positionMono.flatMap(position -> {
+            game.flag(position);
+            return ServerResponse.ok().body(BodyInserters.fromValue(getGameResponse(game)));
+        });
+    }
+
+    private String getGameId(final ServerRequest request) {
+        return request.pathVariable(GAME_ID);
     }
 
     private GameResponse getGameResponse(final Game game) {
