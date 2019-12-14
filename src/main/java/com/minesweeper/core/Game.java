@@ -8,10 +8,12 @@ import java.util.Objects;
 
 public class Game {
 
+    @Getter
     private final Integer rows;
+    @Getter
     private final Integer columns;
+    @Getter
     private final Cell[][] cells;
-
     @Getter
     private GameStatus status;
 
@@ -44,7 +46,16 @@ public class Game {
         try {
             getCell(position).select();
         } catch (GameOverException e) {
-           status = GameStatus.GAME_OVER;
+            endGame();
+        }
+    }
+
+    private void endGame() {
+        status = GameStatus.GAME_OVER;
+        for (int row = 0; row < rows; row++) {
+            for (int column = 0; column < columns; column++) {
+                getCell(column, row).setRevealed();
+            }
         }
     }
 
@@ -71,9 +82,5 @@ public class Game {
             return null;
         }
         return cells[column][row];
-    }
-
-    public Board getBoard() {
-        return new Board(cells, rows, columns);
     }
 }

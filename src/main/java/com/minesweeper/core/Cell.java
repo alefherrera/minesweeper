@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
@@ -15,15 +14,20 @@ public abstract class Cell {
     private final Position position;
 
     @Getter
-    @Setter
-    private String value;
-
-    @Getter
     private boolean revealed;
 
-    public final void select() throws GameOverException {
-        revealed = innerSelect();
+    @Getter
+    @NonNull
+    private boolean hasMine;
+
+    public void setRevealed() {
+        revealed = true;
     }
 
-    protected abstract boolean innerSelect() throws GameOverException;
+    public void select() throws GameOverException {
+        revealed = true;
+    }
+
+    public abstract String getValue();
+
 }

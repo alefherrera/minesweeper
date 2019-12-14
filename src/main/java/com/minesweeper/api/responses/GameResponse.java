@@ -1,6 +1,5 @@
-package com.minesweeper.api.response;
+package com.minesweeper.api.responses;
 
-import com.minesweeper.core.Board;
 import com.minesweeper.core.GameStatus;
 import lombok.Value;
 

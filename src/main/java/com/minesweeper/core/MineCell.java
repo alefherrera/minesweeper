@@ -7,11 +7,16 @@ import static com.minesweeper.core.Constants.MINE;
 public class MineCell extends Cell {
 
     public MineCell(@NonNull final Position position) {
-        super(position, MINE, false);
+        super(position, true);
     }
 
     @Override
-    protected boolean innerSelect() throws GameOverException {
+    public void select() throws GameOverException {
         throw new GameOverException();
+    }
+
+    @Override
+    public String getValue() {
+        return MINE;
     }
 }

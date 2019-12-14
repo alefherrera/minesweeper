@@ -1,4 +1,4 @@
-package com.minesweeper.api.response;
+package com.minesweeper.api.responses;
 
 import lombok.Value;
 
