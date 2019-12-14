@@ -23,11 +23,11 @@ POST /
 
 #### Body
 
-| Field  | Type  | Description  |   |   |
-|---|---|---|---|---|
-| rows  | Integer  | Number of rows  |   |   |
-| columns  | Integer  | Number of rows  |   |   |
-| mines  | [Position(x, y)]  |  A list of the mines that the game would have |   |   |
+| Field  | Type  | Description  |
+|---|---|---|
+| rows  | Integer  | Number of rows  |
+| columns  | Integer  | Number of rows  |
+| mines  | [Position(x, y)]  |  A list of the mines that the game would have |
 
 #### Response
 
@@ -38,7 +38,7 @@ POST /
 ```
 
 | Field  | Type  | Description  |
-|---|---|---|---|---|
+|---|---|---|
 | id  | String  | The identifier of the game  |
 | board  | Board  | The state of the board, with the cells  |
 
@@ -98,7 +98,7 @@ POST /:gameId/flag
 ### Cell
 
 | Field  | Type  | Description  |
-|---|---|---|---|---|
+|---|---|---|
 | position  | [Position(x, y)]   | The identifier of the game  |
 | value  | String  | The value of the cell, only visible when revealed or flagged  |
 | revealed  | Boolean  | Tells if the cell has already been revealed  |
