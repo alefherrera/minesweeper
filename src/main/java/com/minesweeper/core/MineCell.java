@@ -11,7 +11,7 @@ public class MineCell extends Cell {
     }
 
     @Override
-    protected boolean innerSelect() {
-        return false;
+    protected boolean innerSelect() throws GameOverException {
+        throw new GameOverException();
     }
 }

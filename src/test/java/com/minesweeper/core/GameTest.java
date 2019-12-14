@@ -11,17 +11,17 @@ class GameTest {
     @Test
     void test2x2() {
         final Game game = new Game(2, 2);
-        game.addMine(0, 0);
-        final Cell cell = game.getBoard().getCell(new Position(0, 0));
+        game.addMine(new Position(0, 0));
+        final Cell cell = game.getCell(new Position(0, 0));
         assertEquals(MINE, cell.getValue());
     }
 
     @Test
     void testSelect2x2() {
         final Game game = new Game(2, 2);
-        game.addMine(0, 0);
-        game.select(1, 0);
-        final Cell cell = game.getBoard().getCell(new Position(0, 1));
+        game.addMine(new Position(0, 0));
+        game.select(new Position(0, 1));
+        final Cell cell = game.getCell(new Position(0, 1));
         assertEquals("1", cell.getValue());
         assertTrue(cell.isRevealed());
     }

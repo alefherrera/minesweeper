@@ -21,9 +21,9 @@ public abstract class Cell {
     @Getter
     private boolean revealed;
 
-    public final void select() {
+    public final void select() throws GameOverException {
         revealed = innerSelect();
     }
 
-    protected abstract boolean innerSelect();
+    protected abstract boolean innerSelect() throws GameOverException;
 }
