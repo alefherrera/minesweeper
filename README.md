@@ -99,6 +99,6 @@ POST /:gameId/flag
 
 | Field  | Type  | Description  |
 |---|---|---|
-| position  | [Position(x, y)]   | The identifier of the game  |
+| position  | Position(x, y)   | The identifier of the game  |
 | value  | String  | The value of the cell, only visible when revealed or flagged  |
 | revealed  | Boolean  | Tells if the cell has already been revealed  |
