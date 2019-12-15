@@ -110,7 +110,7 @@ POST /:gameId/flag
 | value  | String  | The value of the cell, only visible when revealed or flagged  |
 | revealed  | Boolean  | Tells if the cell has already been revealed  |
 
-### Decisions
+### Notes
 
 At the beginning of the development I started creating the core functionality of the game, modeling it and testing. There was a Game and a Board to separate reponsibilities, but then I realize that the Game was just a wrapper of the board that didn't´t have any functionality. I tried to keep the design as simple as possible, without so many layers of abstraction. On the other side, I used SpringBoot for the webserver because I just wanted to focus on the business logic and not lose my time on configurations, also knowing that then it was going to be easier for the deploy.
 
